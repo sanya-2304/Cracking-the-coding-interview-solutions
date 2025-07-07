@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// tc: O(n) sc: O(1)
 void compressString(string &str){
 int j=0, i=0, n=str.length();
 while(i<n){
