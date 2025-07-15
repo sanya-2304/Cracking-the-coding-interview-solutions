@@ -11,6 +11,26 @@ class Node{
         next=nullptr;
     }
 };
+// with temp buffer: tc: O(n) sc: O(n)
+Node* removeDuplicates(Node *head) {
+        Node* curr=head;
+        Node* prev=nullptr;
+        unordered_set<int>hashSet;
+        while(curr!=NULL){
+            if(hashSet.find(curr->data)!=hashSet.end()){
+                    Node* del=curr;
+                    prev->next=curr->next;
+                    curr=curr->next;
+                    delete del;
+            }else {
+                hashSet.insert(curr->data);
+                prev=curr;
+                curr=curr->next;
+            }
+        }
+        return head;
+    }
+
 // without temp buffer : tc: O(n^2) sc: O(1) - TLE
 Node* removeDupsUnsorted(Node* head){
     Node* temp=head;
@@ -47,7 +67,8 @@ int main(){
     head->next->next->next->next=new Node(2);
     head->next->next->next->next->next=new Node(4);
     printList(head);
-    head=removeDupsUnsorted(head);
+    // head=removeDupsUnsorted(head);
+    head=removeDuplicates(head);
     printList(head);
     return 0;
 }
