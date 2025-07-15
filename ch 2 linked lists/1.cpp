@@ -11,7 +11,7 @@ class Node{
         next=nullptr;
     }
 };
-// brute - tc: O(n^2) sc: O(1) - TLE
+// without temp buffer : tc: O(n^2) sc: O(1) - TLE
 Node* removeDupsUnsorted(Node* head){
     Node* temp=head;
     while(temp!=NULL){
